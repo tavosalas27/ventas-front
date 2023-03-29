@@ -1,15 +1,46 @@
-<p>
-    <mat-toolbar>
-     <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
-    </button>
-    <span>My App</span>
-    <span class="example-spacer"></span>
-    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-      <mat-icon>favorite</mat-icon>
-    </button>
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-     <mat-icon>share</mat-icon>
-   </button>
-  </mat-toolbar>
-</p>
+<mat-toolbar>
+  <span>Bienvenido {{user}}</span>
+  <span class="spacer"></span>
+  <div class="mt-5">
+    <mat-form-field appearance="fill">
+      <mat-label>Categoria</mat-label>
+      <mat-select>
+        <mat-option (click)="restaurar()">Todas</mat-option>
+        <mat-option *ngFor="let item of listaCategorias" value="{{item.id}}" (click)="filtrar(item.id)">{{item.nombre}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  
+</mat-toolbar>
+<div class="flex flex-row w-full h-full px-8 py-5 justify-center">
+  <table>
+    <tbody class="bg-white">
+      <tr class="text-gray-700 border-b border-gray-950" *ngFor="let item of listaProductos">
+        <td class="py-4 px-4">
+          <img src="{{item.imagen}}" width="180" height="190">
+        </td>
+        <td class="px-4">
+          <p class="font-sans font-bold text-xl text-center">{{item.nombre}}</p>
+        </td>
+        <td class="px-4">
+          <p class="font-sans font-bold text-xl text-center">{{item.categoria}}</p>
+        </td>
+        <td class="px-8">
+          <button mat-icon-button matTooltip="Ver detalles">
+            <mat-icon>remove_red_eye</mat-icon>
+          </button>
+        </td>
+        <td class="px-8">
+          <button mat-icon-button matTooltip="Añadir al carrito">
+            <mat-icon>add_shopping_cart</mat-icon>
+          </button>
+        </td>
+        <td class="px-8">
+          <button mat-icon-button matTooltip="Editar producto">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

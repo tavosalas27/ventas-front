@@ -22,9 +22,9 @@ export class LoginComponent implements OnInit {
   }
 
   inicio(){
-    // console.log(this.formLogin.value.user, this.formLogin.value.password)
     this.login.getUsuario(this.formLogin.value.user, this.formLogin.value.password).subscribe((response: any)=>{
       if(response.response=='OK'){
+        localStorage.setItem('user', this.formLogin.value.user)
         this.router.navigate(['/home']);
       }else{
         console.log(response.response)
