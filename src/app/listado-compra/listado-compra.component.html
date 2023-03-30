@@ -4,8 +4,18 @@
 <div class="flex flex-row w-full h-full px-8 py-2 justify-center">
     <table>
         <tbody class="bg-white">
-            <tr class="text-gray-700 border-b border-gray-950">
-
+            <tr class="text-gray-700 border-b border-gray-950" *ngFor="let item of listaCompras">
+                <td class="px-8 h-10">
+                    <button mat-icon-button matTooltip="Ver detalles de la compra">
+                      <mat-icon>remove_red_eye</mat-icon>
+                    </button>
+                </td>
+                <td class="px-8 h-10">
+                    <p class="font-sans font-bold text-xl text-center">{{item.fecha}}</p>
+                </td>
+                <td class="px-8 h-10">
+                    <p class="font-sans font-bold text-xl text-center">$ {{item.total | number}}</p>
+                </td>
             </tr>
         </tbody>
     </table>

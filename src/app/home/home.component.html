@@ -1,6 +1,9 @@
 <mat-toolbar>
   <span>Bienvenido {{user}}</span>
   <span class="spacer"></span>
+  <button class="mx-4" mat-icon-button matTooltip="Configurar categorias" (click)="verCompras()">
+    <mat-icon>add_shopping_cart</mat-icon>
+  </button>
   <button class="mx-4" mat-icon-button matTooltip="Configurar categorias" (click)="crearProducto()">
     <mat-icon>create_new_folder</mat-icon>
   </button>

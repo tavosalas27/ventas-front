@@ -27,6 +27,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ListadoCompraComponent } from './listado-compra/listado-compra.component';
+import { DetalleCompraComponent } from './listado-compra/detalle-compra/detalle-compra.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { ListadoCompraComponent } from './listado-compra/listado-compra.componen
     ProductoComponent,
     DetalleProductoComponent,
     CantidadCompraComponent,
-    ListadoCompraComponent
+    ListadoCompraComponent,
+    DetalleCompraComponent
   ],
   imports: [
     BrowserModule,
