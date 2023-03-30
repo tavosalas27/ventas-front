@@ -78,6 +78,14 @@ export class HomeService {
   }
 
   /**
+   * @description: Crea una compra
+   */
+  public crearCompra(datos: any): Observable<any> {
+    let ruta = this.url + '/crear-compra'
+    return this.http.post(ruta, datos);
+  }
+
+  /**
    * @description: Crea una nueva categoria
    */
   public crearProducto(datos: any): Observable<any> {
