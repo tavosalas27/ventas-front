@@ -62,6 +62,14 @@ export class HomeService {
   }
 
   /**
+   * @description: Crea una nueva categoria
+   */
+  public crearProducto(datos: any): Observable<any> {
+    let ruta = this.url + '/crear-producto'
+    return this.http.post(ruta, datos);
+  }
+
+  /**
    * @description: Actualizar una categoria
    */
   public actualizarCategoria(id:number, datos: any): Observable<any> {

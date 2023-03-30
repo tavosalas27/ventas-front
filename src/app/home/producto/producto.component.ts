@@ -45,8 +45,10 @@ export class ProductoComponent implements OnInit {
       "idcategoria": parseInt(this.formsave.value.categoria),
       "idestado": this.idestado
     }
-
     console.log(data)
+    this.home.crearProducto(data).subscribe((response: any)=>{
+      console.log(response)
+    })
   }
 
   obtenerConsolas(){
