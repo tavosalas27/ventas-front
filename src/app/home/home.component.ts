@@ -5,6 +5,7 @@ import { ConfCategoryComponent } from './conf-category/conf-category.component';
 import { ProductoComponent } from './producto/producto.component';
 import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
 import { CantidadCompraComponent } from './cantidad-compra/cantidad-compra.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -18,7 +19,7 @@ export class HomeComponent implements OnInit {
   listaCategorias:any=[];
   productos:any[] = [];
 
-  constructor(private home: HomeService, public dialog: MatDialog){}
+  constructor(private home: HomeService, public dialog: MatDialog, private router: Router){}
 
   ngOnInit(): void {
     this.user = localStorage.getItem('user');
@@ -40,6 +41,10 @@ export class HomeComponent implements OnInit {
         }
       }
     })
+  }
+
+  verCompras(){
+    this.router.navigate(['/compras']);
   }
 
   llenarCarrito(evento:any, opcion:any) {

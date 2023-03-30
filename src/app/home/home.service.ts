@@ -11,15 +11,6 @@ export class HomeService {
 
   constructor(private http: HttpClient) { }
 
-  compras:any = []
-
-  /**
-   * @description: Añades los datos del producto al carrito
-   */
-  agregarCompra(compra:any) {
-    this.compras.push(compra);
-  }
-
   /**
    * @description: Obtiene los datos del usuario segun su nombre de usuario
    */
