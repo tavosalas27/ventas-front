@@ -1,6 +1,9 @@
 <mat-toolbar>
   <span>Bienvenido {{user}}</span>
   <span class="spacer"></span>
+  <button class="mx-4" mat-icon-button matTooltip="Configurar categorias" (click)="configuracion()">
+    <mat-icon>build</mat-icon>
+  </button>
   <div class="mt-5">
     <mat-form-field appearance="fill">
       <mat-label>Categoria</mat-label>

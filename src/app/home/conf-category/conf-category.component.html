@@ -1,1 +1,66 @@
-<p>conf-category works!</p>
+<h2 mat-dialog-title>Configuración de Categorias</h2>
+<mat-dialog-content class="mat-typography">
+    <div class="flex flex-row w-full">
+        <mat-form-field appearance="fill" class="w-full">
+            <mat-label>Elija la acción a realizar</mat-label>
+            <mat-select>
+              <mat-option value=1 (click)="cambioAccion(1)">Crear categoria</mat-option>
+              <mat-option value=2 (click)="cambioAccion(2)">Editar categoria</mat-option>
+              <mat-option value=3 (click)="cambioAccion(3)">Eliminar categoria</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <form [formGroup]="formnew" *ngIf="accion==1">
+        <div class="flex flex-col h-full">
+            <mat-form-field class="w-full">
+                <mat-label>Digite la nueva categoria</mat-label>
+                <input matInput formControlName="category">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="w-full">
+                <mat-label>Seleccione el estado</mat-label>
+                <mat-select formControlName="state">
+                  <mat-option *ngFor="let item of listaEstados" value="{{item.id}}">{{item.descripcion}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <button class="w-full bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" (click)="nuevaCategoria()">
+                Guardar
+            </button>
+        </div>
+    </form>
+    <form [formGroup]="formupdate" *ngIf="accion==2">
+        <div class="flex flex-col h-full">
+            <mat-form-field appearance="fill" class="w-full">
+                <mat-label>Seleccione la categoria</mat-label>
+                <mat-select formControlName="id">
+                  <mat-option *ngFor="let item of listaCategorias" value="{{item.id}}">{{item.nombre}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="w-full">
+                <mat-label>Digite el nuevo nombre</mat-label>
+                <input matInput formControlName="category">
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="w-full">
+                <mat-label>Seleccione el estado</mat-label>
+                <mat-select formControlName="state">
+                  <mat-option *ngFor="let item of listaEstados" value="{{item.id}}">{{item.descripcion}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <button class="w-full bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded" (click)="actualizarCategoria()">
+                Actualizar
+            </button>
+        </div>
+    </form>
+    <form [formGroup]="formdelete" *ngIf="accion==3">
+        <div class="flex flex-col h-full">
+            <mat-form-field appearance="fill" class="w-full">
+                <mat-label>Seleccione la categoria</mat-label>
+                <mat-select formControlName="id">
+                  <mat-option *ngFor="let item of listaCategorias" value="{{item.id}}">{{item.nombre}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <button class="w-full bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded" (click)="eliminarCategoria()">
+                Eliminar
+            </button>
+        </div>
+    </form>
+</mat-dialog-content>

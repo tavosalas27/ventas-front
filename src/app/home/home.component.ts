@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { HomeService } from './home.service';
+import {MatDialog} from '@angular/material/dialog';
+import { ConfCategoryComponent } from './conf-category/conf-category.component';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +15,7 @@ export class HomeComponent implements OnInit {
   listaProductos:any=[];
   listaCategorias:any=[];
 
-  constructor(private home: HomeService, private router: Router){}
+  constructor(private home: HomeService, public dialog: MatDialog){}
 
   ngOnInit(): void {
     this.user = localStorage.getItem('user');
@@ -34,6 +35,17 @@ export class HomeComponent implements OnInit {
         console.log(this.listaProductos)
       }
     })
+  }
+
+  configuracion() {
+    const dialogRef = this.dialog.open(ConfCategoryComponent, {
+      width:'30%',
+      height:'80%'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   filtrar(id:number){
