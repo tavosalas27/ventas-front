@@ -32,6 +32,11 @@
           <p class="font-sans font-bold text-xl text-center">{{item.categoria}}</p>
         </td>
         <td class="px-8">
+          <button mat-icon-button matTooltip="Editar producto" (click)="actualizarProducto(item)">
+            <mat-icon>edit</mat-icon>
+          </button>
+        </td>
+        <td class="px-8">
           <button mat-icon-button matTooltip="Ver detalles" (click)="detallarProducto(item)">
             <mat-icon>remove_red_eye</mat-icon>
           </button>
@@ -39,11 +44,6 @@
         <td class="px-8">
           <button mat-icon-button matTooltip="Añadir al carrito">
             <mat-icon>add_shopping_cart</mat-icon>
-          </button>
-        </td>
-        <td class="px-8">
-          <button mat-icon-button matTooltip="Editar producto" (click)="actualizarProducto(item)">
-            <mat-icon>edit</mat-icon>
           </button>
         </td>
       </tr>
