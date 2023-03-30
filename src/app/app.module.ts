@@ -9,6 +9,9 @@ import { LoginComponent } from './login/login.component';
 import { ProductoComponent } from './home/producto/producto.component';
 import { ConfCategoryComponent } from './home/conf-category/conf-category.component';
 import { DetalleProductoComponent } from './home/detalle-producto/detalle-producto.component';
+import { CantidadCompraComponent } from './home/cantidad-compra/cantidad-compra.component';
+import { CarritoCompraComponent } from './home/carrito-compra/carrito-compra.component';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from "@angular/common/http";
 
@@ -23,7 +26,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatDatepickerModule} from '@angular/material/datepicker';
-import { CantidadCompraComponent } from './home/cantidad-compra/cantidad-compra.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 @NgModule({
@@ -34,7 +37,8 @@ import { CantidadCompraComponent } from './home/cantidad-compra/cantidad-compra.
     ConfCategoryComponent,
     ProductoComponent,
     DetalleProductoComponent,
-    CantidadCompraComponent
+    CantidadCompraComponent,
+    CarritoCompraComponent
   ],
   imports: [
     BrowserModule,
@@ -53,6 +57,7 @@ import { CantidadCompraComponent } from './home/cantidad-compra/cantidad-compra.
     MatSelectModule,
     MatDialogModule,
     MatDatepickerModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
 
   listaProductos:any=[];
   listaCategorias:any=[];
+  productos:any[] = [];
 
   constructor(private home: HomeService, public dialog: MatDialog){}
 
@@ -35,9 +36,29 @@ export class HomeComponent implements OnInit {
         console.log('No hay productos para mostrar')
       }else{
         this.listaProductos = response
+        for (let index = 0; index < this.listaProductos.length; index++) {
+          const element = this.listaProductos[index];
+          element['cantidad'] = 0
+        }
         console.log(this.listaProductos)
       }
     })
+  }
+
+  llenarCarrito(evento:any, opcion:any) {
+    const numeroString = opcion.cantidad;
+    const numeroNumber = +numeroString;
+    opcion.cantidad = numeroNumber;
+    if (evento.checked) {
+      this.productos.push(opcion);
+      console.log(this.productos)
+    } else {
+      const index = this.productos.indexOf(opcion);
+      if (index >= 0) {
+        this.productos.splice(index, 1);
+        console.log(this.productos)
+      }
+    }
   }
 
   configuracion() {
@@ -89,8 +110,8 @@ export class HomeComponent implements OnInit {
 
   abrirCarrito(item:any){
     const dialogRef = this.dialog.open(CantidadCompraComponent, {
-      width:'80%',
-      height:'90%',
+      width:'50%',
+      height:'35%',
       data: {item}
     });
 

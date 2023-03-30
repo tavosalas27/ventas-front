@@ -21,6 +21,13 @@ export class HomeService {
   }
 
   /**
+   * @description: Obtiene los datos del usuario segun su nombre de usuario
+   */
+  public getDatoUsuario(nombre:string): Observable<any> {
+    return this.http.get(`${this.url}/usuario-comprador/${nombre}`)
+  }
+
+  /**
    * @description: Obtiene la lista de los productos existentes
    */
   public getProductos(): Observable<any> {

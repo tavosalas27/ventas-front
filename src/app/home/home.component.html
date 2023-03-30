@@ -16,37 +16,45 @@
       </mat-select>
     </mat-form-field>
   </div>
-  
 </mat-toolbar>
-<div class="flex flex-row w-full h-full px-8 py-5 justify-center">
-  <table>
-    <tbody class="bg-white">
-      <tr class="text-gray-700 border-b border-gray-950" *ngFor="let item of listaProductos">
-        <td class="py-4 px-4">
-          <img src="{{item.imagen}}" width="180" height="190">
-        </td>
-        <td class="px-4">
-          <p class="font-sans font-bold text-xl text-center">{{item.nombre}}</p>
-        </td>
-        <td class="px-4">
-          <p class="font-sans font-bold text-xl text-center">{{item.categoria}}</p>
-        </td>
-        <td class="px-8">
-          <button mat-icon-button matTooltip="Editar producto" (click)="actualizarProducto(item)">
-            <mat-icon>edit</mat-icon>
-          </button>
-        </td>
-        <td class="px-8">
-          <button mat-icon-button matTooltip="Ver detalles" (click)="detallarProducto(item)">
-            <mat-icon>remove_red_eye</mat-icon>
-          </button>
-        </td>
-        <td class="px-8">
-          <button mat-icon-button matTooltip="Añadir al carrito">
-            <mat-icon>add_shopping_cart</mat-icon>
-          </button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<div class="flex flex-col h-full w-full">
+  <div class="flex flex-row w-full justify-center">
+    <button class="w-4/5 bg-green-500 hover:bg-green-700 mt-4 py-2 px-4 text-white font-bold rounded">Añadir al carrito</button>
+  </div>
+  <div class="flex flex-row w-full h-full px-8 py-2 justify-center">
+    <table>
+      <tbody class="bg-white">
+        <tr class="text-gray-700 border-b border-gray-950" *ngFor="let item of listaProductos">
+          <td class="px-4">
+            <mat-checkbox (change)="llenarCarrito($event, item)" [disabled]="item.cantidad==0"></mat-checkbox>
+          </td>
+          <td class="py-4 px-4">
+            <img src="{{item.imagen}}" width="180" height="190">
+          </td>
+          <td class="px-4">
+            <p class="font-sans font-bold text-xl text-center">{{item.nombre}}</p>
+          </td>
+          <td class="px-4">
+            <p class="font-sans font-bold text-xl text-center">{{item.categoria}}</p>
+          </td>
+          <td class="px-8">
+            <button mat-icon-button matTooltip="Editar producto" (click)="actualizarProducto(item)">
+              <mat-icon>edit</mat-icon>
+            </button>
+          </td>
+          <td class="px-8">
+            <button mat-icon-button matTooltip="Ver detalles" (click)="detallarProducto(item)">
+              <mat-icon>remove_red_eye</mat-icon>
+            </button>
+          </td>
+          <td>
+            <mat-form-field class="w-24" appearance="fill">
+              <mat-label>Cantidad</mat-label>
+              <input matInput [(ngModel)]="item.cantidad">
+            </mat-form-field>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
