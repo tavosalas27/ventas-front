@@ -1,0 +1,50 @@
+<h2 mat-dialog-title>Configuración de Productos</h2>
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="formsave">
+        <div class="flex flex-col h-full w-full">
+            <div class="flex flex-row w-full justify-between space-x-4">
+                <mat-form-field class="w-1/2" appearance="fill">
+                    <mat-label>Nombre del producto</mat-label>
+                    <input matInput formControlName="nombre">
+                </mat-form-field>
+                <mat-form-field class="w-1/2" appearance="fill">
+                    <mat-label>Precio unitario</mat-label>
+                    <input matInput formControlName="precio">
+                </mat-form-field>
+            </div>
+            <div class="flex flex-row w-full justify-between space-x-4">
+                <mat-form-field class="w-1/2" appearance="fill">
+                    <mat-label>IVA</mat-label>
+                    <input matInput formControlName="iva">
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="w-1/2">
+                    <mat-label>Consola</mat-label>
+                    <mat-select formControlName="consola">
+                      <mat-option *ngFor="let item of listaConsolas" value="{{item.id}}">{{item.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="flex flex-row w-full justify-between space-x-4">
+                <mat-form-field appearance="fill" class="w-1/2">
+                    <mat-label>Categoria</mat-label>
+                    <mat-select formControlName="categoria">
+                      <mat-option *ngFor="let item of listaCategorias" value="{{item.id}}" (click)="estado(item.idestado)">{{item.nombre}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="w-1/2" appearance="fill">
+                    <mat-label>URL de caratula</mat-label>
+                    <input matInput formControlName="url">
+                </mat-form-field>
+            </div>
+            <div class="flex flex-row w-full">
+                <mat-form-field class="w-full">
+                    <mat-label>Descripción</mat-label>
+                    <textarea class="tamano" matInput rows="3" maxlength="500" formControlName="descripcion"></textarea>
+                </mat-form-field>
+            </div>
+        </div>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button class="w-full bg-green-500 hover:bg-green-700 py-2 px-4 text-white font-bold rounded" mat-dialog-close (click)="guardarProducto()">Guardar</button>
+</mat-dialog-actions>

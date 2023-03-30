@@ -40,6 +40,13 @@ export class HomeService {
   }
 
   /**
+   * @description: Obtiene la lista de las consolas
+   */
+  public getConsola(): Observable<any> {
+    return this.http.get(`${this.url}/lista-consola`)
+  }
+
+  /**
    * @description: Obtiene la lista de los productos segun la categoria
    */
   public getProductoCategoria(id:number): Observable<any> {

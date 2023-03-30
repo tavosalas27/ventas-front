@@ -1,6 +1,9 @@
 <mat-toolbar>
   <span>Bienvenido {{user}}</span>
   <span class="spacer"></span>
+  <button class="mx-4" mat-icon-button matTooltip="Configurar categorias" (click)="producto()">
+    <mat-icon>create_new_folder</mat-icon>
+  </button>
   <button class="mx-4" mat-icon-button matTooltip="Configurar categorias" (click)="configuracion()">
     <mat-icon>build</mat-icon>
   </button>

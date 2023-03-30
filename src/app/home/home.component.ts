@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HomeService } from './home.service';
 import {MatDialog} from '@angular/material/dialog';
 import { ConfCategoryComponent } from './conf-category/conf-category.component';
+import { ProductoComponent } from './producto/producto.component';
 
 @Component({
   selector: 'app-home',
@@ -41,6 +42,17 @@ export class HomeComponent implements OnInit {
     const dialogRef = this.dialog.open(ConfCategoryComponent, {
       width:'30%',
       height:'80%'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  producto(){
+    const dialogRef = this.dialog.open(ProductoComponent, {
+      width:'70%',
+      height:'90%'
     });
 
     dialogRef.afterClosed().subscribe(result => {

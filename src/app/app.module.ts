@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
+import { ProductoComponent } from './home/producto/producto.component';
 import { ConfCategoryComponent } from './home/conf-category/conf-category.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from "@angular/common/http";
@@ -19,6 +21,7 @@ import {MatInputModule} from '@angular/material/input';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatDatepickerModule} from '@angular/material/datepicker';
 
 
 @NgModule({
@@ -26,10 +29,12 @@ import {MatDialogModule} from '@angular/material/dialog';
     AppComponent,
     HomeComponent,
     LoginComponent,
-    ConfCategoryComponent
+    ConfCategoryComponent,
+    ProductoComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
@@ -42,7 +47,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatInputModule,
     MatTooltipModule,
     MatSelectModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDatepickerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
