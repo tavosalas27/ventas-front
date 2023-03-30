@@ -14,7 +14,6 @@ import { CantidadCompraComponent } from './cantidad-compra/cantidad-compra.compo
 export class HomeComponent implements OnInit {
 
   user:any;
-
   listaProductos:any=[];
   listaCategorias:any=[];
   productos:any[] = [];
@@ -28,7 +27,6 @@ export class HomeComponent implements OnInit {
         console.log('No hay categorias para mostrar')
       }else{
         this.listaCategorias = response
-        console.log(this.listaCategorias)
       }
     })
     this.home.getProductos().subscribe((response: any)=>{
@@ -40,23 +38,26 @@ export class HomeComponent implements OnInit {
           const element = this.listaProductos[index];
           element['cantidad'] = 0
         }
-        console.log(this.listaProductos)
       }
     })
   }
 
   llenarCarrito(evento:any, opcion:any) {
-    const numeroString = opcion.cantidad;
-    const numeroNumber = +numeroString;
-    opcion.cantidad = numeroNumber;
+    const cantidadString = opcion.cantidad;
+    const cantidadNumber = +cantidadString;
+    opcion.cantidad = cantidadNumber;
+
+    const precioString = opcion.precio_unitario;
+    const precioNumber = +precioString;
+    opcion.precio_unitario = precioNumber;
+
     if (evento.checked) {
+      console.log(opcion)
       this.productos.push(opcion);
-      console.log(this.productos)
     } else {
       const index = this.productos.indexOf(opcion);
       if (index >= 0) {
         this.productos.splice(index, 1);
-        console.log(this.productos)
       }
     }
   }
@@ -99,7 +100,7 @@ export class HomeComponent implements OnInit {
   detallarProducto(item:any){
     const dialogRef = this.dialog.open(DetalleProductoComponent, {
       width:'55%',
-      height:'90%',
+      height:'80%',
       data: {item}
     });
 
@@ -108,11 +109,11 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  abrirCarrito(item:any){
+  abrirCarrito(){
     const dialogRef = this.dialog.open(CantidadCompraComponent, {
-      width:'50%',
-      height:'35%',
-      data: {item}
+      width:'90%',
+      height:'80%',
+      data: this.productos
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -126,7 +127,6 @@ export class HomeComponent implements OnInit {
         this.listaProductos = []
       }else{
         this.listaProductos = response
-        console.log(this.listaProductos)
       }
     })
   }
@@ -137,7 +137,6 @@ export class HomeComponent implements OnInit {
         this.listaProductos = []
       }else{
         this.listaProductos = response
-        console.log(this.listaProductos)
       }
     })
   }

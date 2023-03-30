@@ -1,14 +1,50 @@
-<h2 mat-dialog-title>Carrito de compra</h2>
+<h2 mat-dialog-title>Verificar compra</h2>
 <mat-dialog-content class="mat-typography">
-    <form [formGroup]="formcantidad">
-        <div class="flex flex-row w-full">
-            <mat-form-field class="w-full" appearance="fill">
-                <mat-label>Digite la cantidad a comprar del producto</mat-label>
-                <input matInput formControlName="cantidad">
-            </mat-form-field>
-        </div>
-    </form>
+    <div class="flex flex-row w-full h-full px-8 py-2 justify-center">
+        <table>
+            <tbody class="bg-white">
+                <tr class="text-gray-700 border-b border-gray-950" *ngFor="let item of data">
+                    <td class="py-4 px-4">
+                        <img src="{{item.imagen}}" width="180" height="190">
+                    </td>
+                    <td class="px-4">
+                        <p class="font-sans font-bold text-xl text-center">{{item.nombre}}</p>
+                    </td>
+                    <td class="px-4">
+                        <div class="flex flex-col justify-center ">
+                            <div class="font-sans font-semibold text-xl text-center">
+                                Subtotal:
+                            </div>
+                            <div class="font-sans font-bold text-lg text-center">
+                                ${{item.precio_unitario * item.cantidad | number}}
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-4">
+                        <div class="flex flex-col justify-center ">
+                            <div class="font-sans font-semibold text-xl text-center">
+                                IVA:
+                            </div>
+                            <div class="font-sans font-bold text-lg text-center">
+                                {{item.iva}}
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-4">
+                        <div class="flex flex-col justify-center ">
+                            <div class="font-sans font-semibold text-xl text-center">
+                                Subtotal producto:
+                            </div>
+                            <div class="font-sans font-bold text-lg text-center">
+                                ${{(item.precio_unitario * item.cantidad) + ((item.precio_unitario * item.cantidad) * item.iva) | number}}
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button class="w-full bg-green-500 hover:bg-green-700 py-2 px-4 text-white font-bold rounded" (click)="addCompra()">Añadir al carrito</button>
+    <button class="w-full bg-green-500 hover:bg-green-700 py-2 px-4 text-white font-bold rounded">Realizar Compra</button>
 </mat-dialog-actions>

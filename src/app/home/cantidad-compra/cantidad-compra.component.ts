@@ -1,7 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import { FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { HomeService } from '../home.service';
+import { format } from 'date-fns';
 
 @Component({
   selector: 'app-cantidad-compra',
@@ -9,36 +9,31 @@ import { HomeService } from '../home.service';
   styleUrls: ['./cantidad-compra.component.css']
 })
 export class CantidadCompraComponent implements OnInit {
-
-  formcantidad: FormGroup;
   usuario:any;
   nombreUsuario:any;
+  fecha:Date = new Date();
 
-  constructor(private home: HomeService, private fb: FormBuilder, public dialogRef: MatDialogRef<CantidadCompraComponent>,
+  subtotal:number = 0;
+
+  constructor(private home: HomeService, public dialogRef: MatDialogRef<CantidadCompraComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any){}
 
   ngOnInit(): void {
     console.log(this.data)
+    const formatoFecha = format(this.fecha, 'yyyy-MM-dd');
     this.nombreUsuario = localStorage.getItem('user');
     this.home.getDatoUsuario(this.nombreUsuario).subscribe((response: any)=>{
       if(response.length==0){
         console.log('No hay datos para mostrar')
       }else{
         this.usuario = response
-        console.log(this.usuario)
+        // console.log(this.usuario)
       }
-    })
-    this.formcantidad = this.fb.group({
-      cantidad: ['', [Validators.required]]
     })
   }
 
-  addCompra(){
-    let total = (parseInt(this.data.item.precio) * this.formcantidad.value.cantidad) *  this.data.item.iva
-    let data = {
-      
-    }
-    // console.log(this.data)
+  comprar(){
+
   }
 
 }
