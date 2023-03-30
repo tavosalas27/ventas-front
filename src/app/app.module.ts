@@ -8,6 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ProductoComponent } from './home/producto/producto.component';
 import { ConfCategoryComponent } from './home/conf-category/conf-category.component';
+import { DetalleProductoComponent } from './home/detalle-producto/detalle-producto.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from "@angular/common/http";
 
@@ -30,7 +31,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     HomeComponent,
     LoginComponent,
     ConfCategoryComponent,
-    ProductoComponent
+    ProductoComponent,
+    DetalleProductoComponent
   ],
   imports: [
     BrowserModule,

@@ -3,6 +3,7 @@ import { HomeService } from './home.service';
 import {MatDialog} from '@angular/material/dialog';
 import { ConfCategoryComponent } from './conf-category/conf-category.component';
 import { ProductoComponent } from './producto/producto.component';
+import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
 
 @Component({
   selector: 'app-home',
@@ -66,6 +67,18 @@ export class HomeComponent implements OnInit {
       width:'70%',
       height:'90%',
       data: {accion:2, producto:item}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  detallarProducto(item:any){
+    const dialogRef = this.dialog.open(DetalleProductoComponent, {
+      width:'55%',
+      height:'90%',
+      data: {item}
     });
 
     dialogRef.afterClosed().subscribe(result => {

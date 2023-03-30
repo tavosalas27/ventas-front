@@ -1,0 +1,40 @@
+<h2 mat-dialog-title>Información del Producto</h2>
+<mat-dialog-content class="mat-typography">
+    <div class="flex flex-row h-full w-full justify-between">
+        <div class="flex flex-row w-1/2 h-full justify-center">
+            <img src="{{data.item.imagen}}" width="260" height="250">
+        </div>
+        <div class="flex flex-col w-1/2 h-full">
+            <div class="flex flex-row w-full justify-between">
+                <p class="font-sans font-bold text-xl">{{data.item.nombre}}</p>
+            </div>
+            <div class="flex flex-row w-full justify-between">
+                <p class="font-sans font-semibold text-lg">{{data.item.descripcion}}</p>
+            </div>
+            <div class="flex flex-col w-full">
+                <div class="font-sans font-bold text-lg m-0">
+                    Categoria:
+                </div>
+                <div class="font-sans font-semibold text-base">
+                    {{data.item.categoria}}
+                </div>
+            </div>
+            <div class="flex flex-col w-full mt-5">
+                <div class="font-sans font-bold text-lg m-0">
+                    Consola:
+                </div>
+                <div class="font-sans font-semibold text-base">
+                    {{data.item.consola}}
+                </div>
+            </div>
+            <div class="flex flex-col w-full mt-5">
+                <div class="font-sans font-bold text-lg m-0">
+                    Precio:
+                </div>
+                <div class="font-sans font-semibold text-base">
+                    $ {{data.item.precio_unitario | number}} COP con IVA de {{data.item.iva * 100}}%
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>
