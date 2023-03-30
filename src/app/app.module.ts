@@ -23,6 +23,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatSelectModule} from '@angular/material/select';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatDatepickerModule} from '@angular/material/datepicker';
+import { CantidadCompraComponent } from './home/cantidad-compra/cantidad-compra.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
     LoginComponent,
     ConfCategoryComponent,
     ProductoComponent,
-    DetalleProductoComponent
+    DetalleProductoComponent,
+    CantidadCompraComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import {MatDialog} from '@angular/material/dialog';
 import { ConfCategoryComponent } from './conf-category/conf-category.component';
 import { ProductoComponent } from './producto/producto.component';
 import { DetalleProductoComponent } from './detalle-producto/detalle-producto.component';
+import { CantidadCompraComponent } from './cantidad-compra/cantidad-compra.component';
 
 @Component({
   selector: 'app-home',
@@ -77,6 +78,18 @@ export class HomeComponent implements OnInit {
   detallarProducto(item:any){
     const dialogRef = this.dialog.open(DetalleProductoComponent, {
       width:'55%',
+      height:'90%',
+      data: {item}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  abrirCarrito(item:any){
+    const dialogRef = this.dialog.open(CantidadCompraComponent, {
+      width:'80%',
       height:'90%',
       data: {item}
     });
