@@ -78,6 +78,14 @@ export class HomeService {
   }
 
   /**
+   * @description: Actualizar un producto
+   */
+  public actualizarProducto(id:number, datos: any): Observable<any> {
+    let ruta = this.url + '/actualizar-producto/' + id;
+    return this.http.put(ruta, datos);
+  }
+
+  /**
    * @description: Actualizar una categoria
    */
   public eliminarCategoria(id:number, datos: any): Observable<any> {

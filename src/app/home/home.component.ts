@@ -49,10 +49,23 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  producto(){
+  crearProducto(){
     const dialogRef = this.dialog.open(ProductoComponent, {
       width:'70%',
-      height:'90%'
+      height:'90%',
+      data: {accion:1}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  actualizarProducto(item:any){
+    const dialogRef = this.dialog.open(ProductoComponent, {
+      width:'70%',
+      height:'90%',
+      data: {accion:2, producto:item}
     });
 
     dialogRef.afterClosed().subscribe(result => {
